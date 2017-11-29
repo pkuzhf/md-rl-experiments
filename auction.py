@@ -11,10 +11,10 @@ class Auction:
 
     def takeAuction(self):
         bids = []
-        for bidder in bidders:
+        for bidder in self.bidders:
             bids.append(bidder.bid())
         [allocation, payments] = self.mechanism.calcAllocationAndPayments(bids)
-        single_history = [[bids[i], None, None] for i in range(len(bidders))]
+        single_history = [[bids[i], None, None] for i in range(len(self.bidders))]
         for i in range(len(self.mechanism.ctrs)):
             ctr = self.mechanism.ctrs[i]
             click = np.random.random_sample() < ctr
