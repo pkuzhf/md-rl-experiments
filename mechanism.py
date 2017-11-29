@@ -20,7 +20,7 @@ class GFP(Mechanism):
         bidder = sorted(bidder)
         bidder.reverse()
         allocation = [bidder[i][1] for i in range(len(bidder))]
-        payments = [bidder[i][0] for i in range(len(bidder)-1)]
+        payments = [bidder[i][0] for i in range(len(bidder))]
         return [allocation,payments]
     
 class VCG(Mechanism):
