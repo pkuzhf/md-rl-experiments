@@ -35,7 +35,10 @@ class VCG(Mechanism):
         for i in range(len(bids)):
             sum = 0.0
             for j in range(len(bids)-1,-1,-1):
-                payments[j] = sum
+                if self.ctrs[j]:
+                    payments[j] = sum/self.ctrs[j]
+                else:
+                    payments[j] = 0
                 if(j):
                     sum+=(self.ctrs[j-1]-self.ctrs[j])*bidder[j][0]
 
