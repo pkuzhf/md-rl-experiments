@@ -13,7 +13,7 @@ class Mechanism:
 class GFP(Mechanism):
 
     def calcAllocationAndPayments(self, bids):
-        print(bids)
+        #print(bids)
         bidder = []
         for i in range(len(bids)):
             bidder.append([bids[i], i])
@@ -23,30 +23,6 @@ class GFP(Mechanism):
         payments = [bidder[i][0] for i in range(len(bidder))]
         return [allocation,payments]
     
-class VCG(Mechanism):
-
-    def calcAllocationAndPayments(self, bids):
-        bidder = []
-        for i in range(len(bids)):
-            bidder.append([bids[i], i])
-        bidder = sorted(bidder)
-        bidder.reverse()
-        payments = [0 for i in range(bidder)]
-        for i in range(len(bids)):
-            sum = 0.0
-            for j in range(len(bids)-1,-1,-1):
-                if self.ctrs[j]:
-                    payments[j] = sum/self.ctrs[j]
-                else:
-                    payments[j] = 0
-                if(j):
-                    sum+=(self.ctrs[j-1]-self.ctrs[j])*bidder[j][0]
-
-        allocation = [bidder[i][1] for i in range(len(bidder))]
-        return [allocation,payments]
-
-
-
 class GSP(Mechanism):
 
     def calcAllocationAndPayments(self, bids):
@@ -61,3 +37,28 @@ class GSP(Mechanism):
         payments.append(0)
         #print(allocation,payments)
         return [allocation,payments]
+
+class VCG(Mechanism):
+
+    def calcAllocationAndPayments(self, bids):
+        bidder = []
+        for i in range(len(bids)):
+            bidder.append([bids[i], i])
+        bidder = sorted(bidder)
+        bidder.reverse()
+        payments = [0 for i in range(len(bidder))]
+        for i in range(len(bids)):
+            sum = 0.0
+            for j in range(len(bids)-1,-1,-1):
+                if self.ctrs[j]:
+                    payments[j] = sum/self.ctrs[j]
+                else:
+                    payments[j] = 0
+                if j :
+                    sum+=(self.ctrs[j-1]-self.ctrs[j])*bidder[j][0]
+        #print(payments)
+        allocation = [bidder[i][1] for i in range(len(bidder))]
+        return [allocation,payments]
+
+
+
