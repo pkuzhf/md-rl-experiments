@@ -1,11 +1,14 @@
 
-*.png
-*.pyc
-*.pyproj
-*.png
-.vs/md-rl-experiments1/v15/.suo
-*.ipch
-*.db
 .vs/md-rl-experiments/v15/.suo
+*.pyc
+*.png
 *.sln
+*.pyproj
 *.rar
+*.db
+*.ipch
+.vs/md-rl-experiments1/v15/.suo
+.vs/repos/v15/.suo
+GFP vs diverse bidders.png
+*.png
+*.png
