@@ -1,0 +1,11 @@
+
+*.png
+*.pyc
+*.pyproj
+*.png
+.vs/md-rl-experiments1/v15/.suo
+*.ipch
+*.db
+.vs/md-rl-experiments/v15/.suo
+*.sln
+*.rar
