@@ -12,9 +12,5 @@ class uniformValuationGenerator:
         self.right = right
 
     def generate(self):
-        #if(np.random.random_sample()<0.75):
-            #print('a')
-            #return np.random.random_sample() * (self.right - self.left)*0.3 + self.left
-        #else:
         return np.random.random_sample() * (self.right - self.left) + self.left
 

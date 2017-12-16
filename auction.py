@@ -8,7 +8,6 @@ class Auction:
         self.bidders = bidders
         self.mechanism = mechanism
         self.revenue = 0
-        self.social_welfare = 0
 
     def takeAuction(self):
         bids = []
@@ -18,13 +17,12 @@ class Auction:
         single_history = [[bids[i], None, None] for i in range(len(self.bidders))]
         for i in range(len(self.mechanism.ctrs)):
             ctr = self.mechanism.ctrs[i]
-            click = int(np.random.random_sample() < ctr)
+            click = np.random.random_sample() < ctr
             if click:
                 price = payments[i]
                 self.revenue += price
-                self.social_welfare += self.bidders[allocation[i]].valuation
             else:
-                price = 0 #之前写的是None，改掉了
+                price = None
             self.bidders[allocation[i]].feedback(click, price)
             single_history[allocation[i]][1:] = [click, payments[i]]
         self.mechanism.learn(single_history)

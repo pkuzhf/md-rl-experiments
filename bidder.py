@@ -8,12 +8,12 @@ class Bidder:
         self.strategy = strategy
         self.history = [] # [valuation, bid, click, price]
         self.revenue = 0
-        self.valuation = 0
+        
 
     def bid(self):
-        self.valuation = self.valuation_generator.generate()
-        bid = self.strategy.bid(self.valuation)
-        self.history.append([self.valuation, bid, None, None])
+        valuation = self.valuation_generator.generate()
+        bid = self.strategy.bid(valuation)
+        self.history.append([valuation, bid, None, None])
         return bid
 
 
